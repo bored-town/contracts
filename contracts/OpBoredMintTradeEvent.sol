@@ -10,7 +10,7 @@ contract OpBoredMintTradeEvent is Ownable {
     mapping(address => uint256) public claimableTokens;
     uint256 public totalClaimable = 0;
     bool public claimEnabled = false;
-    uint256 public claimLimit = 2111_000000000000000000; // 2111
+    uint256 public claimLimit = 2006_000000000000000000; // 2005.572
 
     // events
     event CanClaim(address indexed recipient, uint256 amount);
