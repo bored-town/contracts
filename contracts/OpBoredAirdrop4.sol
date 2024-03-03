@@ -10,7 +10,7 @@ contract OpBoredAirdrop4 is Ownable {
     mapping(address => uint256) public claimableTokens;
     uint256 public totalClaimable = 0;
     bool public claimEnabled = false;
-    uint256 public claimLimit = 25_000000000000000000; // 25 OP
+    uint256 public claimLimit = 18_000000000000000000; // 17.886 OP
 
     // events
     event CanClaim(address indexed recipient, uint256 amount);
