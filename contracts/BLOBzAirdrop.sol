@@ -5,6 +5,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract BLOBzAirdrop is Ownable {
+    constructor(address initialOwner) Ownable(initialOwner) {}
 
     IERC20 public token;
     mapping(address => uint256) public claimableTokens;
