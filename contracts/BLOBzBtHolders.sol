@@ -11,7 +11,7 @@ contract BLOBzBtHolders is Ownable {
     mapping(address => uint256) public claimableTokens;
     uint256 public totalClaimable = 0;
     bool public claimEnabled = false;
-    uint256 public claimLimit = 493_483_421 * 10 ** decimals();
+    uint256 public claimLimit = 493_483_421 * 1000000000000000000;
 
     // events
     event CanClaim(address indexed recipient, uint256 amount);
