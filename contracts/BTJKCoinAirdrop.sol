@@ -2,12 +2,16 @@
 pragma solidity ^0.8.18;
 
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
+
+interface BRC20Token {
+    function balanceOf(address who) external view returns (uint);
+    function transfer(address to, uint value) external;
+}
 
 contract BTJKCoinAirdrop is Ownable {
     constructor(address initialOwner) Ownable(initialOwner) {}
 
-    IERC20 public token;
+    BRC20Token public token;
     mapping(address => uint256) public claimableTokens;
     uint256 public totalClaimable = 0;
     bool public claimEnabled = false;
@@ -20,7 +24,7 @@ contract BTJKCoinAirdrop is Ownable {
 
     // setup contract (owner)
     function setToken(address newToken) external onlyOwner {
-        token = IERC20(newToken);
+        token = BRC20Token(newToken);
     }
     function setClaimLimit(uint256 newLimit) external onlyOwner {
         claimLimit = newLimit;
@@ -49,7 +53,7 @@ contract BTJKCoinAirdrop is Ownable {
         totalClaimable = 0;
     }
     function withdraw(uint256 amount) external onlyOwner {
-        require(token.transfer(msg.sender, amount), "fail transfer token");
+        token.transfer(msg.sender, amount);
         emit Withdrawal(msg.sender, amount);
     }
 
@@ -65,7 +69,7 @@ contract BTJKCoinAirdrop is Ownable {
         claimableTokens[msg.sender] = 0;
 
         // we don't use safeTransfer since impl is assumed to be OZ
-        require(token.transfer(msg.sender, amount), "fail token transfer");
+        token.transfer(msg.sender, amount);
         emit HasClaimed(msg.sender, amount);
     }
 
