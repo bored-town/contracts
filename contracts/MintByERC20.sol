@@ -18,9 +18,9 @@ contract MintByERC20 is ERC721A, Ownable {
     uint256 public START_ID = 1;
 
     bool public mintEnabled = true;
-    string public baseURI;
+    string public baseURI = "ipfs://bafybeia3xoh2kgd6hhvn5gwk2s7en7fh5jf4gpw4zk5asho4pit4ozzyfu/";
     IERC20 public token;
-    uint256 public mintPrice = 1 ether; // token unit
+    uint256 public mintPrice = 1_000_000 * 10**18; // 1M token
 
     // start token id
     function _startTokenId() internal view virtual override returns (uint256) {
