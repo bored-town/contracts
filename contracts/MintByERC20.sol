@@ -52,7 +52,7 @@ contract MintByERC20 is ERC721A, Ownable {
     }
 
     // mint
-    function mint(uint quantity) external {
+    function mint(uint quantity, bytes32[] calldata _merkleProof) external {
         require(mintEnabled, "Sale is not enabled");
         require(_numberMinted(msg.sender) + quantity <= MAX_MINT_PER_WALLET, "Over wallet limit");
 
