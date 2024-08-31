@@ -6,21 +6,21 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
-contract SpaceBLOBz is ERC721A, Ownable {
+contract SpaceBLOBzB is ERC721A, Ownable {
 
     // config
     constructor(address initialOwner)
-        ERC721A("Space BLOBz", "SPACEBLOBZ")
+        ERC721A("Space BLOBz B", "SPACEBLOBZB")
         Ownable(initialOwner) {
     }
-    uint256 public MAX_SUPPLY = 48_440_000;
-    uint256 public MAX_MINT_PER_WALLET = 48_440_000;
+    uint256 public MAX_SUPPLY = 4_844_000;
+    uint256 public MAX_MINT_PER_WALLET = 4_844_000;
     uint256 public START_ID = 1;
 
     bool public mintEnabled = true;
-    string public baseURI = "https://bored-town.github.io/cdn/assets/space-blobz.gif";
+    string public baseURI = "https://bored-town.github.io/cdn/assets/space-blobz-b.gif";
     IERC20 public token;
-    uint256 public mintPrice = 10_000_000 * 10**18; // 10M token
+    uint256 public mintPrice = 100_000_000 * 10**18; // 100M token
 
     // start token id
     function _startTokenId() internal view virtual override returns (uint256) {
@@ -34,7 +34,7 @@ contract SpaceBLOBz is ERC721A, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         string memory jsonPreImage = string.concat(
             string.concat(
-                string.concat('{"name": "Space BLOBz #', Strings.toString(tokenId)),
+                string.concat('{"name": "Space BLOBz B #', Strings.toString(tokenId)),
                 '","description":"This NFT will then grant you access to claim $BLZ on the Base chain on September 22, 2024","image":"'
             ),
             baseURI
