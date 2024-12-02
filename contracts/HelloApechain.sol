@@ -5,10 +5,10 @@ import "erc721a/contracts/ERC721A.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract TestApechain is ERC721A, Ownable {
+contract HelloApechain is ERC721A, Ownable {
 
     // config
-    constructor(address initialOwner) ERC721A("Test APECHAIN", "TESTAPECHAIN") Ownable(initialOwner) {}
+    constructor(address initialOwner) ERC721A("Hello APECHAIN", "TESTAPECHAIN") Ownable(initialOwner) {}
     uint256 public MAX_SUPPLY = 10_000;
     uint256 public MAX_MINT_PER_WALLET = 10;
     uint256 public START_ID = 1;
@@ -28,8 +28,8 @@ contract TestApechain is ERC721A, Ownable {
     function tokenURI(uint256 tokenId) public view virtual override returns (string memory) {
         string memory jsonPreImage = string.concat(
             string.concat(
-                string.concat('{"name": "Test APECHAIN #', Strings.toString(tokenId)),
-                '","description":"Test deploy NFT on APECHAIN","image":"'
+                string.concat('{"name": "Hello APECHAIN #', Strings.toString(tokenId)),
+                '","description":"Hello deploy NFT on APECHAIN","image":"'
             ),
             baseURI
         );
